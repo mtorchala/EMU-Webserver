@@ -28,8 +28,8 @@ public class EmuService {
 			Messung[] messungen = new DbAktionen().leseMessungen(messreihenid);
 			try {
 				String jsonString = obm.writeValueAsString(messungen);
-				Response resp = Response.status(200).entity(jsonString).build();
-				return resp;
+				return Response.status(200).entity(jsonString).build();
+				
 			} catch (JsonProcessingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -57,8 +57,8 @@ public class EmuService {
 			Messreihe[] messreihen = new DbAktionen().leseAlleMessreihen();
 			try {
 				String jsonString = obm.writeValueAsString(messreihen);
-				Response resp = Response.status(200).entity(jsonString).build();
-				return resp;
+				return Response.status(200).entity(jsonString).build();
+			
 			} catch (JsonProcessingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -85,8 +85,8 @@ public class EmuService {
 			int anzahl = new DbAktionen().getAnzahlMessungen(id);
 			try {
 				String jsonString = obm.writeValueAsString(anzahl);
-				Response resp = Response.status(200).entity(jsonString).build();
-				return resp;
+				return Response.status(200).entity(jsonString).build();
+			
 			} catch (JsonProcessingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -113,8 +113,8 @@ public class EmuService {
 			int anzahl = new DbAktionen().getAnzahlMessungen(id);
 			try {
 				String jsonString = obm.writeValueAsString(anzahl);
-				Response resp = Response.status(200).entity(jsonString).build();
-				return resp;
+				return  Response.status(200).entity(jsonString).build();
+	
 			} catch (JsonProcessingException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
