@@ -1,15 +1,20 @@
 package webapi.business;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Path("/funktionen")
@@ -132,6 +137,56 @@ public class EmuService {
 	
 	
 	// POST
+	
+	
+	@POST
+	@Path("/fuegeMessreiheEin")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void fuegeMessreiheEin(String messreihestring){
+		
+		try {
+			Messreihe messreihe = new ObjectMapper().readValue(messreihestring, Messreihe.class);
+			DbAktionen dbAktionen = new DbAktionen();
+			dbAktionen.fuegeMessreiheEin(messreihe);
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
+	@POST
+	@Path("/fuegeMessungEin/{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void fuegeMessungEin(String messungstring, @PathParam("id") int id) throws JsonParseException, JsonMappingException, IOException{
+		
+		try {
+			Messung messung = new ObjectMapper().readValue(messungstring, Messung.class);
+			DbAktionen dbAktionen = new DbAktionen();
+			dbAktionen.fuegeMessungEin(id, messung);
+			
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 	
 	
 	

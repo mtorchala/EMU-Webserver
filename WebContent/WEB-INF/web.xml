@@ -12,7 +12,7 @@
   
   <servlet>
 		<servlet-name>jersey-servlet</servlet-name>
-		<servlet-class> com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
 		<load-on-startup>1</load-on-startup>
   </servlet>
 	<servlet-mapping>
